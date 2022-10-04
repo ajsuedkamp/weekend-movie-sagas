@@ -6,7 +6,12 @@ function MovieList() {
 
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
-    const movieDetails = useSelector(store => store.movieDetails);
+    const selectedMovie = useSelector(store => store.selectedMovie);
+
+    const displayMovie = (movieToDisplay) => {
+        dispatch({type: 'display', payload:movieToDisplay})
+    }
+    
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
@@ -21,7 +26,7 @@ function MovieList() {
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
                             <img src={movie.poster} alt={movie.title}
-                                onClick={() => dispatch({type: 'display', payload:movie.title})}/>
+                                onClick={() => displayMovie(movie)}/>
                         </div>
                     );
                 })}
