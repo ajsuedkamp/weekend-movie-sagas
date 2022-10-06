@@ -1,13 +1,22 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 
 function MovieDetails() {
+
+    const dispatch = useDispatch();
     const movie = useSelector(store => store.selectedMovie);
+    const genres = useSelector(store => store.genres);
+    console.log(genres);
     // useEffect and saga to fetch genres
+    useEffect(() => {
+        dispatch({ type: 'FETCH_GENRES' });
+    }, []);
+
+ 
     return (
         <>
-            <h2>Movie Details</h2>
             <div key={movie.id} >
                  <h3>{movie.title}</h3>
                 <img src={movie.poster} alt={movie.title}/>

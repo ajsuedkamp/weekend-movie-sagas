@@ -11,7 +11,7 @@ function MovieList() {
 
     const displayMovie = (movieToDisplay) => {
         dispatch({type: 'display', payload:movieToDisplay});
-        history.push('/details');
+        history.push('/details')
     }
     
 
