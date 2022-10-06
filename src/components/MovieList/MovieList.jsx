@@ -1,15 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './MovieList.css'
+import { useHistory } from 'react-router-dom';
 
 function MovieList() {
 
     const dispatch = useDispatch();
     const movies = useSelector(store => store.movies);
-    const selectedMovie = useSelector(store => store.selectedMovie);
+    const history = useHistory();
 
     const displayMovie = (movieToDisplay) => {
-        dispatch({type: 'display', payload:movieToDisplay})
+        dispatch({type: 'display', payload:movieToDisplay});
+        history.push('/details');
     }
     
 
