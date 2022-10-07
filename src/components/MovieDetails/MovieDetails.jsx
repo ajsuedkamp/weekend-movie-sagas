@@ -7,12 +7,8 @@ function MovieDetails() {
 
     const dispatch = useDispatch();
     const movie = useSelector(store => store.selectedMovie);
-    const genres = useSelector(store => store.genres);
-    console.log(genres);
     // useEffect and saga to fetch genres
-    useEffect(() => {
-        dispatch({ type: 'FETCH_GENRES' });
-    }, []);
+
 
  
     return (

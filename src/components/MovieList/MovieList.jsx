@@ -9,21 +9,26 @@ function MovieList() {
     const movies = useSelector(store => store.movies);
     const history = useHistory();
 
-    const displayMovie = (movieToDisplay) => {
-        dispatch({type: 'display', payload:movieToDisplay});
-        history.push('/details')
-    }
     
-
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
+
+    const displayMovie = (movieToDisplay) => {
+        console.log(movieToDisplay);
+        // Dispatch sends data to redux & sagas
+        // Make sure actions are *unique* between sagas and redux so they don't run both
+        dispatch({ type: 'SET_MOVIE_DETAILS', payload: movieToDisplay });
+
+    }
 
     return (
         <main>
             <h1>MovieList</h1>
             <section className="movies">
+                {/* Movies is an Array */}
                 {movies.map(movie => {
+                    // For each movie in the array, display it on the DOM
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>

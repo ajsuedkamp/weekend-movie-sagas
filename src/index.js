@@ -57,24 +57,26 @@ const movies = (state = [], action) => {
     }
 }
 
-// Used to store movie details
-const selectedMovie = (state = [], action) => {
-    console.log('selectedMovie reducer', action);
-    if (action.type === 'display') {
-        return action.payload
-    }
-    return state;
-    }
-
-
 // Used to store the movie genres
 const genres = (state = [], action) => {
-    if (action.type === 'SET_GENRES') {
-        return action.payload;
+    switch (action.type) {
+        case 'SET_GENRES':
+            return action.payload;
+        default:
+            return state;
     }
-    return state;
 }
 
+// Used to store the movie that was clicked on
+// selectedMovie = movieToDisplay;
+const selectedMovie = (state = {}, action) => {
+    switch (action.type) {
+        case 'SET_MOVIE_DETAILS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
 
 
 // Create one store that all components can use

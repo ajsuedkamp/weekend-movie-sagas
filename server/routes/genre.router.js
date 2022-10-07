@@ -4,9 +4,9 @@ const pool = require('../modules/pool')
 
 router.get('/:id', (req, res) => {
   // Add query to get all genres
-  const movieId = req.params.id
+  //  querytext WHERE movies.id = $1
   const query = `SELECT * FROM "genres";`;
-  pool.query(query)
+  pool.query(query, [req.params.id])
     .then( result => {
       res.send(result.rows);
     })

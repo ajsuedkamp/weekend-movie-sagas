@@ -6,8 +6,8 @@ import MovieDetails from '../MovieDetails/MovieDetails';
 function App() {
   return (
     <div className="App">
-      <h1>The Movies Saga!</h1>
       <Router>
+      <h1>The Movies Saga!</h1>
         <Route path="/" exact>
           <MovieList />
         </Route>
